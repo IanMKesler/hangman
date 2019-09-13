@@ -1,0 +1,17 @@
+--- !ruby/object:Game
+player: !ruby/object:Player
+  player: true
+  turn: 0
+  guess: ''
+  won: false
+computer: !ruby/object:Player
+  player: false
+  turn: 0
+  guess: ''
+  won: false
+board: !ruby/object:Board
+  word:
+  - a
+  board:
+  - - _
+  - []
