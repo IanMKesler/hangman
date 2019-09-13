@@ -2,11 +2,11 @@ class Game
     require_relative "player"
     require_relative "board"
 
-    def initialize(dictionary)
+    def initialize(wordlist)
         @player = Player.new(true)
         @computer = Player.new(false)
 
-        @board = Board.new(generate_word(dictionary))
+        @board = Board.new(generate_word(wordlist))
     end
 
     def play
@@ -21,8 +21,8 @@ class Game
 
     private
 
-    def generate_word(dictionary)
-        dictionary.sample.downcase
+    def generate_word(wordlist)
+        wordlist.sample.downcase
     end
 
     def won_message

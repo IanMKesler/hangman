@@ -10,7 +10,7 @@ class Board
 
     def show
         puts
-        @board.each { |field| puts field.join("")}
+        @board.each { |field| puts field.join(" ")}
         puts
     end
 
