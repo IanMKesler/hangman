@@ -11,7 +11,6 @@ class Game
     end
 
     def play
-        puts "Welcome to Hangman!"
         until @player.won || @player.turn == 8
             play_round
         end
@@ -19,6 +18,14 @@ class Game
         @board.show
         puts "Thanks for playing!"
     end 
+
+    def save_game
+        yaml = YAML::dump(self)
+        game_file = File.open("save.txt", "w") 
+        game_file.puts yaml
+        game_file.close
+        puts "Game saved!"
+    end
 
     private
 
@@ -44,7 +51,11 @@ class Game
     def play_round
         @board.show
 
-        @player.get_guess
+        unless @player.get_guess
+            self.save_game
+            puts "Thanks for playing!"
+            exit
+        end
         while @board.board[0].include?(@player.guess) || @board.board[1].include?(@player.guess)
             puts "You've already guessed that one! Try another letter."
             @player.get_guess

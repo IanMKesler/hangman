@@ -12,8 +12,9 @@ class Player
     end
 
     def get_guess
-        puts "Please input your letter guess:"
+        puts "Please input your guess or press , to save your game and quit:"
         input = gets.strip.downcase
+        return false if input == ","
         until input.match(/[a-z]/)
             puts "Input any letter and press enter"
             input = gets.strip.downcase
